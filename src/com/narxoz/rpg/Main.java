@@ -39,15 +39,12 @@ public class Main {
         publisher.register(new HeroStatusMonitor(party));
         publisher.register(new LootDropper());
 
-        // switch ranger strategy mid setup to show runtime switching
         ranger.setStrategy(new AggressiveStrategy());
         System.out.println("Ranger switched strategy to: " + ranger.getStrategy().getName());
 
-        // run the encounter
         DungeonEngine engine = new DungeonEngine(party, boss, publisher);
         EncounterResult result = engine.run();
 
-        // print results
         System.out.println("\n=== ENCOUNTER RESULT ===");
         System.out.println("Heroes won: " + result.isHeroesWon());
         System.out.println("Rounds played: " + result.getRoundsPlayed());
